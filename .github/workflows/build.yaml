@@ -4,12 +4,14 @@ jobs:
     my_first_job:
         runs-on: ubuntu-latest
         steps: 
-            - name: simple echo command
-              run: |
-                 echo "first job"
-                 java --version
-                 python --version
-                 node --version
+            - name: getting code repo...
+              uses: actions/checkout@v3
+            - name: installing jdk 17
+              uses: actions/setup-java@v4
+              with:
+                distribution: 'zulu' # See 'Supported distributions' for available options
+                java-version: '17'
+            - run: mvn package  -DskipTests
  
   
     my_second_job: 
