@@ -1,0 +1,16 @@
+name: build
+on: workflow_dispatch
+jobs:
+    my_first_job:
+        runs-on: ubuntu-latest
+        steps: 
+            - run: echo "first job"
+ 
+  
+    my_second_job: 
+        needs: my_first_job
+        runs-on: windows-latest
+        steps: 
+            - run: echo "second job"
+
+ 
