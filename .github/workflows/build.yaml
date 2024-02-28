@@ -4,7 +4,8 @@ jobs:
     my_first_job:
         runs-on: ubuntu-latest
         steps: 
-            - run: echo "first job"
+            - name: simple echo command
+              run: echo "first job"
  
   
     my_second_job: 
