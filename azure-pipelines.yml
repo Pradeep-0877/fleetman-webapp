@@ -24,3 +24,9 @@ steps:
     ArtifactName: 'fleetman-webapp'
     publishLocation: 'Container'
   displayName: Publishing the artifacts...
+- task: Docker@2
+  inputs:
+    containerRegistry: 'docker hub'
+    repository: 'pradeep0877/fleetman'
+    command: 'buildAndPush'
+    Dockerfile: 'Dockerfile'
