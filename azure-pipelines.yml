@@ -10,7 +10,7 @@ pool:
   default
 
 steps:
-- script: mvn package -DskipTests=true
+- script: mvn deploy -DskipTests=true
   displayName: Building maven Application....
 - task: CopyFiles@2
   inputs:
