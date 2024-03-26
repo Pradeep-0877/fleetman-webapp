@@ -12,3 +12,15 @@ pool:
 steps:
 - script: mvn package -DskipTests=true
   displayName: Building maven Application....
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(agent.builddirectory)'
+    Contents: '**/*.war'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+  displayName: Copying the artifact...
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'fleetman-webapp'
+    publishLocation: 'Container'
+  displayName: Publishing the artifacts...
