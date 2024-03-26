@@ -162,6 +162,30 @@
 	    </dependency>		
 	    
 	</dependencies>
+	<repositories>
+	     <repository>
+                  <id>AzureDevOpsHandsOn1</id>
+                  <url>https://pkgs.dev.azure.com/AzureDevOpsHandsOn1/_packaging/AzureDevOpsHandsOn1/maven/v1</url>
+               <releases>
+                 <enabled>true</enabled>
+               </releases>
+               <snapshots>
+                  <enabled>true</enabled>
+               </snapshots>
+             </repository>
+	</repositories>
+	<distributionManagement>
+		<repository>
+                  <id>AzureDevOpsHandsOn1</id>
+                  <url>https://pkgs.dev.azure.com/AzureDevOpsHandsOn1/_packaging/AzureDevOpsHandsOn1/maven/v1</url>
+               <releases>
+                 <enabled>true</enabled>
+               </releases>
+               <snapshots>
+                  <enabled>true</enabled>
+               </snapshots>
+             </repository>
+	</distributionManagement>
 	
 	<build>
 		<plugins>
