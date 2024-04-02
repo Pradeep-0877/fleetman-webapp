@@ -14,7 +14,7 @@ stages:
         pool: default
         steps: 
           - script: mvn clean install
-            desplayName: Building the app...
+            displayName: Building the app...
           - task: CopyFiles@2
             inputs:
               Contents: '**/*.war'
