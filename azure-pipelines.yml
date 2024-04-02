@@ -35,7 +35,7 @@ stages:
             displayName: Building and pushing the images to ACR repo
           - task: CopyFiles@2
             inputs:
-              Contents: '**/kube-manifests'
+              Contents: 'kube-manifests'
               TargetFolder: '$(build.artifactstagingdirectory)'
           - task: PublishBuildArtifacts@1
             inputs:
