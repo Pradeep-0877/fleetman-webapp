@@ -38,14 +38,14 @@ stages:
                 pwd
           - task: CopyFiles@2
             inputs:
-              SourceFolder: '$(agent.builddirectory)/kube-manifests'
+              SourceFolder: '$(System.DefaultWorkingDirectory)/kube-manifests'
               Contents: '**'
               TargetFolder: '$(build.artifactstagingdirectory)'
-          - task: PublishBuildArtifacts@1
-            inputs:
-              PathtoPublish: '$(Build.ArtifactStagingDirectory)/kube-manifests'
-              ArtifactName: 'manifests'
-              publishLocation: 'Container'
+          # - task: PublishBuildArtifacts@1
+          #   inputs:
+          #     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          #     ArtifactName: 'manifests'
+          #     publishLocation: 'Container'
 
           
            
