@@ -1,0 +1,34 @@
+iapiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fleetman
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fleetman
+  template:
+    metadata:
+      labels:
+        app: fleetman
+    spec:
+      containers:
+        - image: acr0877.azurecr.io/fleetman:9
+          name: fleetman
+          livenessProbe:
+            httpGet:
+              port: 8080
+              path: /
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-svc
+spec:
+   selector:
+     app: fleetman
+   ports:
+     - targetPort: 8080
+       port: 80
+   type: LoadBalancer
