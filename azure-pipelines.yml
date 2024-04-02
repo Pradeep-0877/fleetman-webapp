@@ -38,8 +38,8 @@ stages:
                 pwd
           - task: CopyFiles@2
             inputs:
-              SourceFolder: '$(agent.builddirectory)'
-              Contents: '**/kube-manifests'
+              SourceFolder: '$(agent.builddirectory)/kube-manifests'
+              Contents: '**'
               TargetFolder: '$(build.artifactstagingdirectory)'
           - task: PublishBuildArtifacts@1
             inputs:
