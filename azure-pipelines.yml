@@ -6,27 +6,35 @@
 trigger:
 - master
 
-pool:
-  default
+stages:
+  - stage: Build
+    displayName: Building the application
+    jobs: 
+      - job: Build
+        pool: default
+        steps: 
+          - script: mvn clean install
+            desplayName: Building the app...
+          - task: CopyFiles@2
+            inputs:
+              Contents: '**/*.war'
+              TargetFolder: '$(build.artifactstagingdirectory)'
+            displayName: copying the artifacts to staging directory
+          - task: PublishBuildArtifacts@1
+            inputs:
+             PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+             ArtifactName: 'fleetman-wbapp'
+             publishLocation: 'Container'
+            displayName: Publishing the artifacts
+          - task: Docker@2
+            inputs:
+              containerRegistry: 'acr0877'
+              repository: 'fleetman'
+              command: 'buildAndPush'
+              Dockerfile: '**/Dockerfile'
+            displayName: Building and pushing the images to ACR repo
 
-steps:
-- script: mvn deploy -DskipTests=true
-  displayName: Building maven Application....
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: '$(agent.builddirectory)'
-    Contents: '**/*.war'
-    TargetFolder: '$(build.artifactstagingdirectory)'
-  displayName: Copying the artifact...
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'fleetman-webapp'
-    publishLocation: 'Container'
-  displayName: Publishing the artifacts...
-- task: Docker@2
-  inputs:
-    containerRegistry: 'docker hub'
-    repository: 'pradeep0877/fleetman'
-    command: 'buildAndPush'
-    Dockerfile: 'Dockerfile'
+          
+           
+           
+
