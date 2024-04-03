@@ -13,7 +13,7 @@ spec:
         app: fleetman
     spec:
       containers:
-        - image: acr0877.azurecr.io/fleetman:9
+        - image: acr0877.azurecr.io/fleetman
           name: fleetman
           livenessProbe:
             httpGet:
