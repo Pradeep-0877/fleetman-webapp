@@ -11,7 +11,8 @@ stages:
     displayName: Building the application
     jobs: 
       - job: Build
-        pool: default
+        pool: 
+         vmImage: ubuntu-latest
         steps: 
           - script: mvn clean install -DskipTests=true
             displayName: Building the app...
