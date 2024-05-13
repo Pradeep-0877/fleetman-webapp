@@ -12,14 +12,14 @@ jobs:
                 distribution: 'zulu' # See 'Supported distributions' for available options
                 java-version: '17'
             - name: Building the application
-              run: mvn clean install -DskipTests 
+              run: mvn package -DskipTests=true
             - name: uploading artifacts
               uses: actions/upload-artifact@v4
               with: 
                 name: my-new-app
                 path: target/*.war
             - name: deploy to tomcat
-              run: curl -v -u admin:admin -T target/*.war http://54.206.111.223:8080/manager/text/deploy?path=/fleetman-0877
+              run: curl -v -u admin:admin -T /home/runner/.m2/repository/com/virtualpairprogrammers/fleetman/0.0.1-SNAPSHOT/fleetman-0.0.1-SNAPSHOT.war http://54.206.111.223:8080/manager/text/deploy?path=/fleetman-0877
 
 
     
