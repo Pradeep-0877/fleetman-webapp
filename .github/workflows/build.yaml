@@ -19,7 +19,7 @@ jobs:
                 name: my-new-app
                 path: target/*.war
             - name: deploy to tomcat
-              run: curl -v -u admin:admin -T target/fleetman-0.0.1-SNAPSHOT.war http://54.206.111.223:8080/manager/text/deploy?path=/fleetman-0877
+              run: curl -v -u admin:admin -T /home/runner/work/fleetman-webapp/fleetman-webapp/target/fleetman-0.0.1-SNAPSHOT.war http://54.206.111.223:8080/manager/text/deploy?path=/fleetman-0877
 
 
     
