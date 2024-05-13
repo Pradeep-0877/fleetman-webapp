@@ -18,13 +18,10 @@ jobs:
               with: 
                 name: my-new-app
                 path: target/*.war
+            - name: deploy to tomcat
+              run: curl -v -u admin:admin -T target/*.war http://54.206.111.223:8080/manager/text/deploy?path=/fleetman-0877
 
 
     
-    my_second_job:
-        needs: my_first_job
-        runs-on: ubuntu-latest
-        steps: 
-            - run: echo "second job"
     
     
